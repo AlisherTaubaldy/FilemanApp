@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>File Upload</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Подключение стилей через Vite -->
     @vite('resources/css/app.css')
 </head>

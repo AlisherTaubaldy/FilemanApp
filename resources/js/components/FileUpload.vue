@@ -8,6 +8,7 @@
                 @dragover.prevent="handleDragOver"
                 @dragleave="handleDragLeave"
                 :class="{ 'dragging': isDragging }"
+                @click="triggerFileInput"
             >
                 <input
                     type="file"
@@ -36,6 +37,7 @@ const file = ref(null);
 const name = ref('');
 const progress = ref(null);
 const isDragging = ref(false);
+const fileInput = ref(null);
 
 const handleFileInput = (e) => {
     file.value = e.target.files[0];
@@ -69,7 +71,7 @@ const uploadFile = async () => {
     formData.append('name', name.value);
 
     try {
-        const response = await axios.post('/api/files', formData, {
+        const response = await axios.post('/files', formData, {
             headers: {
                 'Content-Type': 'multipart/form-data',
             },
